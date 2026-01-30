@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+          form { margin: 20px; padding: 20px; border: 1px solid #ccc; width: 300px; }
+          label { display: block; margin-top: 10px; }
+          input { margin-bottom: 10px; width: 100%; box-sizing: border-box; }
+          button { background: green; color: white; padding: 10px; width: 100%; border: none; cursor: pointer; }
+      </style>
+  </head>
+
+  <body>
+    <h1>Добавить новый аквариум</h1>
+    <form method="post">
+      {% csrf_token %}
+      <label for="{{ form.aquarium_size.id_for_label }}">
+        {{ form.aquarium_size.label }}
+      </label>
+      {{ form.aquarium_size }}
+      {{ form.aquarium_size.errors }}
+      <label for="{{ form.aquarium_price.id_for_label }}">
+        {{ form.aquarium_price.label }}
+      </label>
+      {{ form.aquarium_price }}
+      {{ form.aquarium_price.errors }}
+
+      <button type="submit">Создать</button>
+    </form>
+    
+    <br>
+    <a href="/aquariums/">Вернуться к списку</a>
+  </body>
+</html>

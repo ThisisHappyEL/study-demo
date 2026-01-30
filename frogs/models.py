@@ -4,7 +4,8 @@ from django.db import models
 class FrogType(models.Model):
     """
     Видовая принадлежность лягухи. Содержит в себе информацию о:
-    Содержит в себе информацию о названии вида и её рыночную стоимость
+    Названии вида,
+    Её рыночной стоимость
     """
     name = models.CharField(max_length=100, verbose_name="Название вида")
     default_price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Стандартная цена")
