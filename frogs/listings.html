@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 20px;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .card {
+      background-color: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 15px;
+      width: 250px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      color: #2c3e50;
+      border-bottom: 2px solid #27ae60;
+      padding-bottom: 10px;
+    }
+
+    .price-tag {
+      font-weight: bold;
+      color: #e74c3c;
+      font-size: 1.2em;
+    }
+</style>
+<body>
+
+  <h1 style="text-align: center;">Наши Аквариумы</h1>
+
+  <div class="container">
+    {% for aquarium in aquariums %}
+      <div class="card">
+        <h3>Аквариум #{{ aquarium.id }}</h3>
+        
+        <p><strong>Размер:</strong> {{ aquarium.aquarium_size }}</p>
+        
+        <p><strong>Лягушек внутри:</strong> {{ aquarium.current_quantity }} шт.</p>
+        
+        <p><strong>Виды:</strong> 
+          {% if aquarium.stored_types_display %}
+            {{ aquarium.stored_types_display }}
+          {% else %}
+            <em>Пусто</em>
+          {% endif %}
+        </p>
+
+        <p class="price-tag">Цена: {{ aquarium.total_price }} руб.</p>
+      </div>
+    
+    {% empty %}
+      <p>Аквариумов пока нет в продаже :(</p>
+    {% endfor %}
+
+  </div>
+
+</body>
+</html>
